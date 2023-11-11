@@ -1,0 +1,25 @@
+.feature-card {
+  display: grid;
+  gap: 0.8rem;
+  padding: 1.2rem 2rem 1.2rem 2rem;
+
+  border-radius: var(--border-radius);
+  background-color: var(--main-color);
+
+  .header {
+    margin: 0;
+  }
+
+  .childrens {
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &.bottomless {
+    padding-bottom: 0;
+  }
+}
+

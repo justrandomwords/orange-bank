@@ -1,0 +1,59 @@
+:root {
+  --gap: 1.5rem;
+  --cards-container-height: calc(53.98rem / var(--card-size-coefficient));
+}
+
+.home-page {
+  display: grid;
+  grid-template-rows: var(--cards-container-height) 62vh;
+  flex-direction: column;
+  gap: var(--gap);
+  padding: 1.5rem 2.2rem;
+  max-height: 100%;
+
+  .cards-container {
+
+    display: flex;
+    gap: 2rem;
+    overflow-x: scroll;
+
+    .toggle-button {
+      background-color: var(--card-color);
+      border-radius: var(--border-radius);
+      padding: 1rem;
+      cursor: pointer;
+
+      > * {
+        fill: var(--main-color);    
+        height: 100%;
+        width: 2rem;
+        transform: translateY(0.3rem);
+
+        transition: transform 0.5s;
+      }
+
+      &.active {
+        > * {
+          transform: scaleY(-1);
+        }
+      }
+    }
+  }
+
+  .function-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: var(--gap);
+
+    & > *:nth-child(2) {
+      grid-column: 2;
+      grid-row: span 2 / 3;
+    } 
+
+    .transactions-cards-container {
+      display: grid;
+      gap: 1.5rem;
+    }
+  }
+}

@@ -1,25 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/ui/Header/Header';
+import Navbar from './components/ui/Navbar/Navbar';
+import navbarElements from './enums/navbarElements';
+import Home from './pages/Home/Home';
+import Payment from './pages/Payment/Payment';
+import Creadit from './pages/Credit/Credit';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCards } from './services/state/user/cards';
+import { getCards, getTransactionHistory } from './services/api/userData';
+import { setTransactionHistory } from './services/state/user/transactionHistory';
 
-function App() {
+export default function App() {
+  const dispatch = useDispatch();
+  dispatch(setCards(getCards()));
+  dispatch(setTransactionHistory(getTransactionHistory()))
+
+  const pageIndex = useSelector(state => state.pageIndex.value);
+
+
+  function getPageByIndex(pageIndex) {
+    switch (pageIndex) {
+      case navbarElements.Home:
+        return <Home/>
+      case navbarElements.Payment:
+        return <Payment/>
+      case navbarElements.Credit:
+        return <Creadit/>
+      case navbarElements.Setting:
+        return <Home/>
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className='App'>
+        <Header/>
+        <Navbar/>
+        {getPageByIndex(pageIndex)}
+      </div>
   );
 }
-
-export default App;

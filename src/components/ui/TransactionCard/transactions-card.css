@@ -1,0 +1,11 @@
+.transactions-container {
+  .date {
+    margin: 1rem 0 1rem 0;
+    color: var(--day-color);
+  }
+
+  .transactions {
+    display: grid;
+    gap: 1rem;
+  }
+}

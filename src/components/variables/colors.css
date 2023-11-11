@@ -1,0 +1,16 @@
+:root {
+  --main-color: white;
+  --secondary-color: rgba(24, 24, 24, 1);
+  --additional-color: rgb(40, 40, 40);
+  --accent-color: rgba(255, 142, 37, 1);
+
+  --card-color: rgba(43, 45, 52, 1);
+  --card-font-color: rgba(98, 101, 115, 1);
+
+  --background-color: var(--secondary-color);
+  --font-color: var(--secondary-color);
+  --additional-font-color: var(--main-color);
+
+  --day-color: rgba(155, 155, 155, 1);
+  --positive-payment-color: rgba(87, 198, 69, 1);
+}
