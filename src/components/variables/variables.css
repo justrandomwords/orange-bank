@@ -1,4 +1,5 @@
 :root {
   --card-size-coefficient: 5;
   --border-radius: calc(3.18rem * 3/6);
+  --animation-speed: 0.4s;
 }

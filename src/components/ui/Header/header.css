@@ -5,8 +5,8 @@
   align-items: center;
   justify-content: space-between;
   height: 3rem;
-  background-color: var(--background-color);
-  color: var(--additional-font-color);
+  background-color: var(--header-color);
+  color: var(--header-font-color);
   padding: 0.5rem 1rem;
   box-sizing: border-box;
 

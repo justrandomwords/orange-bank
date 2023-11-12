@@ -1,6 +1,4 @@
-@import url('./themes/dark.css');
-
-html {
+html[theme='light'] {
   --main-color: hsl(50, 10%, 10%);
   --secondary-color: rgba(24, 24, 24, 1);
   --additional-color: rgb(40, 40, 40);
@@ -34,4 +32,4 @@ html {
 
   --transactions-day-color: rgba(155, 155, 155, 1);
   --positive-payment-color: rgba(87, 198, 69, 1);
-}
+} 

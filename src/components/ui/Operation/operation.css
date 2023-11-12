@@ -7,7 +7,12 @@
   padding: 0.8rem 1rem;
   border-radius: 0.9rem;
 
+  transition: 
+    background-color calc(var(--animation-speed) / 2),
+    color calc(var(--animation-speed) / 2);
+
   &:hover {
     background-color: var(--operation-highlight-color);
+    color: var(--operation-font-highlight-color);
   }
 }

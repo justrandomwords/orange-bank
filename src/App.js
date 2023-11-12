@@ -9,6 +9,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCards } from './services/state/user/cards';
 import { getCards, getTransactionHistory } from './services/api/userData';
 import { setTransactionHistory } from './services/state/user/transactionHistory';
+import { themes } from './enums/theme';
+
+
 
 export default function App() {
   const dispatch = useDispatch();
@@ -16,6 +19,18 @@ export default function App() {
   dispatch(setTransactionHistory(getTransactionHistory()))
 
   const pageIndex = useSelector(store => store.pageIndex.value);
+  const theme = useSelector(store => store.theme.value)
+
+  switch (theme) {
+    case themes.light:
+      document.documentElement.setAttribute("theme", themes.light);
+      break;
+    case themes.dark:
+      document.documentElement.setAttribute("theme", themes.dark);
+      break;
+    default:
+      break;
+  }
 
 
   function getPageByIndex(pageIndex) {
@@ -32,10 +47,10 @@ export default function App() {
   }
 
   return (
-      <div className='App'>
-        <Header/>
-        <Navbar/>
-        {getPageByIndex(pageIndex)}
-      </div>
+    <div className='App'>
+      <Navbar/>
+      {getPageByIndex(pageIndex)}
+      <Header/>
+    </div>
   );
 }

@@ -1,0 +1,37 @@
+.cards-container {
+  display: flex;
+  gap: 2rem;
+  height: var(--cards-container-height);
+  overflow-x: auto;
+
+
+  .toggle-button {
+    border: transparent;
+    outline: none;
+    background-color: var(--card-color);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    cursor: pointer;
+
+    > * {
+      fill: var(--card-icon-color);    
+      height: 100%;
+      width: 2rem;
+      transform: translateY(0.3rem);
+    }
+
+    &.active {
+      > * {
+        transform: scaleY(-1);
+      }
+    }
+  }
+
+  &[hidden] {
+    background-color: red;
+  }
+
+  &::-webkit-scrollbar {
+    /* display: none; */
+  }
+}

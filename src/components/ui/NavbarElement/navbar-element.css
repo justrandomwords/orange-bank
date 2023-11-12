@@ -6,7 +6,7 @@
   padding: 0.8rem 1rem;
   box-sizing: border-box;
   height: 3.6rem;
-  color: var(--additional-font-color);
+  color: var(--navbar-element-font-color);
   border-radius: 0.6rem;
   cursor: pointer;
   box-sizing: border-box;
@@ -19,19 +19,19 @@
     & > * {
       height: 100%;
       width: min-content;
-      fill: var(--main-color);    
+      fill: var(--navbar-element-icon-color);    
     }
   } 
 
   .name {
     white-space: nowrap;
-    transition: opacity 0.4s;
+    transition: opacity var(--animation-speed);
   }
 }
 
 
 .navbar-element:hover {
-  background-color: var(--additional-color);
+  background-color: var(--navbar-element-highlight-color);
 }
 
 .navbar[hidden] .name {

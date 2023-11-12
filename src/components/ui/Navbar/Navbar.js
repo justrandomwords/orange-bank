@@ -7,13 +7,24 @@ import { useDispatch, useSelector } from 'react-redux'
 import navbarElements from '../../../enums/navbarElements'
 import { change } from '../../../services/state/display/pageIndexSlice'
 import { invertNavbarVisibility } from '../../../services/state/display/navbarVisibilitySlice'
+import { setTheme } from '../../../services/state/display/themeSlice'
+import { themes } from '../../../enums/theme'
 
 export default function Navbar() {
   const isShown = useSelector(store => store.navbarVisibility.isShown)
   const dispatch = useDispatch();
+  const theme = useSelector(store => store.theme.value)
 
   function updatePage(pageIndex) {
     dispatch(change(pageIndex))
+  }
+
+  function updateTheme() {
+    if (theme === themes.light) 
+      dispatch(setTheme(themes.dark))
+    else if (theme === themes.dark) 
+      dispatch(setTheme(themes.light))
+
   }
 
   return (
@@ -40,6 +51,11 @@ export default function Navbar() {
         handleClick={() => updatePage(navbarElements.Credit)}>
           <CreditIcon/>
         </NavbarElement>
+
+        <NavbarElement 
+          name='Тема' 
+          handleClick={updateTheme}
+        />
     </nav>
   )
 }

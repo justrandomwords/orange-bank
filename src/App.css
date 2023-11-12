@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap');
-@import url('./components/variables/colors.css');
 @import url('./components/variables/variables.css');
+@import url('./components/variables/colors.css');
 
 p {
   margin: 0;
@@ -8,8 +8,9 @@ p {
 
 body {
   margin: 0;
-  background-image: url('./assets/images/background.jpg');
-  background-color: rgba(255, 255, 255, 0.8);
+  /* background-image: url('./assets/images/background2.jpg'); */
+  background-size: 14rem;
+  background-color: var(--background-color);
   background-blend-mode: overlay;
 }
 

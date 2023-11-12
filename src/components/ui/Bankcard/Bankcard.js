@@ -1,10 +1,10 @@
-import './credit-card.css'
+import './bank-card.css'
 
-export default function CreaditCard(props) {
+export default function Bankcard(props) {
   const cardNumber = props.number.split(' ').map(numberPart => <p>{numberPart}</p>)
 
   return (
-    <div className='credit-card' id={props.id}>
+    <div className='bankcard' id={props.id}>
       <div className='balance-container'>
         <p>
           {props.balance}

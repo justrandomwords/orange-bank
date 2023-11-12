@@ -1,13 +1,11 @@
-@import url('./themes/dark.css');
-
-html {
+html[theme='dark'] {
   --main-color: hsl(50, 10%, 10%);
   --secondary-color: rgba(24, 24, 24, 1);
   --additional-color: rgb(40, 40, 40);
   --accent-color: hwb(33 40% 0%);
   --font-color: rgb(255, 255, 255);
 
-  --background-color: hsl(50, 50%, 80%);
+  --background-color: hsl(0, 3%, 6%);
 
   --header-color: var(--secondary-color);
   --header-font-color: var(--font-color);
@@ -21,10 +19,10 @@ html {
   --card-color: hsl(0, 0%, 12%);
   --card-icon-color: var(--font-color);
   --card-font-color: var(--font-color);
-  --card-additional-font-color: rgb(154, 154, 154);
+  --card-additional-font-color: var(--font-color);
 
-  --feature-card-color: var(--font-color);
-  --feature-card-font-color: black;
+  --feature-card-color: var(--secondary-color);
+  --feature-card-font-color: var(--font-color);
   
   --operation-highlight-color: var(--accent-color);
   --operation-font-highlight-color: black;

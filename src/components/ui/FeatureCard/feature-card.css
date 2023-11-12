@@ -3,9 +3,9 @@
   flex-direction: column;
   gap: 0.8rem;
   padding: 1.2rem 2rem 1.2rem 2rem;
-
+  color: var(--feature-card-font-color);
   border-radius: var(--border-radius);
-  background-color: var(--main-color);
+  background-color: var(--feature-card-color);
 
   .header {
     margin: 0;
@@ -18,7 +18,7 @@
     overflow-y: auto;
 
     &::-webkit-scrollbar {
-      /* display: none; */
+      display: none;
     }
   }
 

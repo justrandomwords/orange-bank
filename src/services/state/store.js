@@ -3,6 +3,7 @@ import pageIndexReducer from './display/pageIndexSlice'
 import cardsReducer from "./user/cards";
 import transactionHistoryReducer from "./user/transactionHistory";
 import navbarVisibilityReducer from "./display/navbarVisibilitySlice";
+import themeReducer from "./display/themeSlice";
 
 
 export const store = configureStore({
@@ -10,6 +11,7 @@ export const store = configureStore({
       pageIndex: pageIndexReducer,
       cards: cardsReducer,
       transactionHistory: transactionHistoryReducer,
-      navbarVisibility: navbarVisibilityReducer
+      navbarVisibility: navbarVisibilityReducer,
+      theme: themeReducer
     }
 });
