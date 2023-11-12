@@ -6,14 +6,6 @@
   height: 2.5rem;
   gap: 0.5rem;
 
-  .icon-container {
-    height: 100%;
-    aspect-ratio: 1;
-    color: hwb(213 33% 0%);
-    background: linear-gradient(var(--icon-first-color), var(--icon-second-color));
-    border-radius: 100%;
-  }
-
   .main-info {
     flex: 1;
 
@@ -21,9 +13,7 @@
       font-weight: bold;
     }
 
-    .description {
-
-    }
+    .description {}
   }
 
   .amount-container {

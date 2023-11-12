@@ -1,0 +1,13 @@
+.operation-container {
+  display: flex;
+  height: 2.5rem;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  padding: 0.8rem 1rem;
+  border-radius: 0.9rem;
+
+  &:hover {
+    background-color: var(--operation-highlight-color);
+  }
+}

@@ -1,19 +1,11 @@
-import { getTwoSimilarColorsHWB } from '../../colorGenerator';
+import GradientIcon from '../GradientIcon/GradientIcon';
 import './transaction.css'
 
 export default function Transaction(props) {
-  const colors = getTwoSimilarColorsHWB()
-
-  const iconStyle = {
-    ['--icon-first-color']: colors[0],
-    ['--icon-second-color']: colors[1] 
-  }
-
-  console.log(props.payment);
 
   return (
     <div className='transaction-container'>
-      <div className='icon-container' style={iconStyle}></div>
+      <GradientIcon/>
       <div className='main-info'>
         <p className='name'>{props.name}</p>
         <p className='description'>{props.description}</p>

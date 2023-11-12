@@ -1,0 +1,6 @@
+.icon-container {
+  height: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(var(--icon-first-color), var(--icon-second-color));
+  border-radius: 100%;
+}

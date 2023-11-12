@@ -15,7 +15,7 @@ export default function App() {
   dispatch(setCards(getCards()));
   dispatch(setTransactionHistory(getTransactionHistory()))
 
-  const pageIndex = useSelector(state => state.pageIndex.value);
+  const pageIndex = useSelector(store => store.pageIndex.value);
 
 
   function getPageByIndex(pageIndex) {

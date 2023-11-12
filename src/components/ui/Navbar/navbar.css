@@ -1,8 +1,15 @@
 .navbar {
-  position: fixed;
-  left: 0; top: 3rem; bottom: 0;
   background-color: var(--background-color);
-  width: 18rem;
+  width: 15rem;
   display: flex;
+  gap: 1rem;
+  align-items: center;
   flex-direction: column;
+  transition: width 0.6s;
+  padding: 0.5rem;
+  
+  &[hidden] {
+    transition: width 0.4s;
+    width: 4rem;
+  }
 }

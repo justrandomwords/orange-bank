@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import CreaditCard from '../../components/ui/CreditCard/CreditCard'
 import './home.css'
 import useSmoothScroll from 'react-smooth-scroll-hook';
@@ -6,6 +6,7 @@ import { ReactComponent as ArrowIcon } from '../../assets/icons/angle-down.svg'
 import FeatureCard from '../../components/ui/FeatureCard/FeatureCard';
 import { useSelector } from 'react-redux';
 import TransactionCard from '../../components/ui/TransactionCard/TransactionsCard';
+import Operation from '../../components/ui/Operation/Operation';
 
 
 export default function Home() {
@@ -43,6 +44,10 @@ export default function Home() {
   const transactionHistoryElement = transactionHistory.map(transactionsDay => 
   <TransactionCard name={transactionsDay.date} transactionsDay={transactionsDay.transactions}/>)
 
+  function test() {
+    console.log('test')
+  }
+
   return (
     <div className='home-page'>
       <div className='cards-container' ref={scrollContainerRef} onWheel={horizontalScroll}>
@@ -51,8 +56,13 @@ export default function Home() {
         </button>
         {creditCards}
       </div>
+
       <div className='function-container'>
-        <FeatureCard header='Швидкі дії'>
+        <FeatureCard childrenClass='operations' header='Швидкі дії'>
+          <Operation name='Платежі' handleClick={test}/>
+          <Operation name='Платежі' handleClick={test}/>
+          <Operation name='Платежі' handleClick={test}/>
+          <Operation name='Переказ на карту / за номером телефону' handleClick={test}/>
         </FeatureCard>
 
         <FeatureCard class='bottomless' childrenClass='transactions-cards-container' header='Історія транзакції'>
