@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/orange-bank/static/css/main.a0d66362.css",
+    "main.js": "/orange-bank/static/js/main.1546b3e3.js",
+    "static/js/787.1bd93301.chunk.js": "/orange-bank/static/js/787.1bd93301.chunk.js",
+    "static/media/1.jpg": "/orange-bank/static/media/1.c30c37451208c544f0a9.jpg",
+    "static/media/home.svg": "/orange-bank/static/media/home.c0fbeedee3720336ce7f71f8e632e913.svg",
+    "static/media/piggy-bank.svg": "/orange-bank/static/media/piggy-bank.645b492935446477333309b13fa858f3.svg",
+    "index.html": "/orange-bank/index.html",
+    "static/media/money-check.svg": "/orange-bank/static/media/money-check.9c4e5217e25abab492797af21f7dfc32.svg",
+    "static/media/angle-down.svg": "/orange-bank/static/media/angle-down.972490916fc53237a0569c03a10d44cb.svg",
+    "main.a0d66362.css.map": "/orange-bank/static/css/main.a0d66362.css.map",
+    "main.1546b3e3.js.map": "/orange-bank/static/js/main.1546b3e3.js.map",
+    "787.1bd93301.chunk.js.map": "/orange-bank/static/js/787.1bd93301.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a0d66362.css",
+    "static/js/main.1546b3e3.js"
+  ]
+}
