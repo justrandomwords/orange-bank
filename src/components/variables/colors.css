@@ -1,7 +1,7 @@
 @import url('./themes/dark.css');
 
 html {
-  --main-color: hsl(50, 10%, 10%);
+  --main-color: rgb(32,39,46);
   --secondary-color: rgba(24, 24, 24, 1);
   --additional-color: rgb(40, 40, 40);
   --accent-color: hwb(33 40% 0%);

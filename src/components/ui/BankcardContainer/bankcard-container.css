@@ -1,9 +1,9 @@
 .cards-container {
+  flex: 1;
   display: flex;
   gap: 2rem;
-  height: var(--cards-container-height);
+  min-height: var(--cards-container-height);
   overflow-x: auto;
-
 
   .toggle-button {
     border: transparent;

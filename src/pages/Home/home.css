@@ -5,16 +5,16 @@
 
 .home-page {
   display: grid;
-  grid-template-rows: var(--cards-container-height) 62vh;
+  grid-template-rows: var(--cards-container-height) 1fr;
   flex-direction: column;
   gap: var(--gap);
   padding: 1.5rem 2.2rem;
-  max-height: 100%;
+  
 
   .function-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 2fr;
+    grid-template-rows: 1fr 1fr;
     gap: var(--gap);
 
     & > *:nth-child(2) {

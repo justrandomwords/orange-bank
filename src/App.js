@@ -48,9 +48,9 @@ export default function App() {
 
   return (
     <div className='App'>
+      <Header/>
       <Navbar/>
       {getPageByIndex(pageIndex)}
-      <Header/>
     </div>
   );
 }
