@@ -8,7 +8,7 @@ p {
 
 body {
   margin: 0;
-  /* background-image: url('./assets/images/background2.jpg'); */
+  /* background-image: url('./assets/images/b5.jpg'); */
   background-size: 14rem;
   background-color: var(--background-color);
   background-blend-mode: overlay;
@@ -22,10 +22,4 @@ html {
   line-height: 1.4rem;
 }
 
-.App {
-  display: grid;
-  grid-template-columns: 1fr 100fr;
-  padding-top: 3rem;
-  height: 100vh;
-  box-sizing: border-box;
-}
+.App {}

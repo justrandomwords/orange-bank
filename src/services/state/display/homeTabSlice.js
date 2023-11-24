@@ -1,18 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 import navbarElements from "../../../enums/navbarElements";
 
-const pageIndexSlice = createSlice({
+const homeTabSlice = createSlice({
   name: 'page-index',
   initialState: {
-    value: navbarElements.Home
+    index: navbarElements.Home
   },
   reducers: {
     change: (state, action) => {
-      state.value = action.payload;
+      state.index = action.payload;
     }
   }
 });
 
-export const { change } = pageIndexSlice.actions;
+export const { change } = homeTabSlice.actions;
 
-export default pageIndexSlice.reducer;
+export default homeTabSlice.reducer;

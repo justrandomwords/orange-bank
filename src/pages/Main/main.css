@@ -1,0 +1,46 @@
+.main-page-container {
+  background-color: var(--mainpage-background);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100dvh;
+  gap: 1rem;
+
+  .header {
+    line-height: 9rem;
+    font-size: 8rem;
+    margin: 0;
+
+    .accent {
+      color: rgb(255, 166, 0);
+    }
+  }
+
+  .description {
+    text-align: center;
+    max-width: 40rem;
+  }
+
+  .buttons-container {
+    display: flex;
+    gap: 1rem;
+
+    .button {
+      padding: 0.5rem 1.5rem;
+      border: transparent;
+      border-radius: 1rem;
+      cursor: pointer;
+
+      &.login {
+        background-color: white;
+        color: black;
+      }
+
+      &.sinup {
+        background-color: black;
+        color: white;
+      }
+    }
+  }
+}

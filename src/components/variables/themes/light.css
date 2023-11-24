@@ -32,4 +32,7 @@ html[theme='light'] {
 
   --transactions-day-color: rgba(155, 155, 155, 1);
   --positive-payment-color: rgba(87, 198, 69, 1);
+
+  --login-backgroung: var(--background-color);
+  --login-backdrop-image: url('../../assets/images/background-light.png');
 } 

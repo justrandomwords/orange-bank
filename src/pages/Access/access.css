@@ -1,0 +1,117 @@
+.access-container {
+  height: 100dvh;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  background-color: var(--login-backdrop-color);
+  background: var(--login-backdrop-image);
+  background-size: 17rem;
+  color: var(--login-font-color);
+  z-index: 1;
+
+  .access-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+    max-width: 25rem;
+    border-radius: 1rem;
+    padding: 4rem 2rem;
+    backdrop-filter: blur(1rem) brightness(70%);
+    box-shadow: 0 0 5rem var(--login-border-color);
+  
+    & * {
+      font-size: 1.1rem;
+    }
+  
+    .header {
+      margin: 0.5rem 0 2rem 0;
+      font-size: 2rem;
+    }
+  
+    .input-container {
+      display: grid;
+      width: 100%;
+      gap: 1rem;
+
+      & > * {
+        position: relative;
+
+        .form-input {
+          background-color: var(--login-input-backgroung-color);
+          color: var(--login-input-font-color);
+          border: transparent;
+          border-radius: 5rem;
+          outline: none;
+          padding: 0.8rem 1rem;
+          width: 100%;
+          box-sizing: border-box;
+
+          &::-ms-reveal {
+            filter: invert(100%);
+          }
+        }
+
+        & .placeholder {
+          content: attr(placeholder);
+          position: absolute;
+          pointer-events: none;
+          top: 0.8rem; left: 1rem; 
+          color: var(--login-font-color);
+          transition: 
+            transform calc(var(--animation-speed) / 2),
+            font-size calc(var(--animation-speed) / 2);
+        }
+
+        & input:focus ~ .placeholder,
+        & input:invalid ~ .placeholder {
+          transform: translateY(-1.5rem);
+          font-size: 0.8rem;
+        }
+      }
+    }
+  
+    .from-bottom {
+      display: grid;
+      width: 100%;
+      justify-items: center;
+      gap: 1rem;
+  
+      .confirm-button {
+        width: 100%;
+        border-radius: 5rem;
+        padding: 0.7rem 1.5rem;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 2rem;
+        border: none;
+        
+        background-color: transparent;
+        box-shadow: 0 0 0 0.1rem var(--login-button-main-color);
+  
+        color: var(--login-button-font-color);
+  
+        transition: 
+          background-color 0.2s,
+          box-shadow 0.2s,
+          color 0.2s;
+  
+        &:hover {
+          background-color: var(--login-button-main-color);
+          color: var(--login-button-hover-font-color);
+        }
+      }
+  
+      .under-button {
+        display: flex;
+        gap: 0.5rem;
+  
+        .to-login {
+          font-weight: bold;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

@@ -34,4 +34,16 @@ html {
 
   --transactions-day-color: rgba(155, 155, 155, 1);
   --positive-payment-color: rgba(87, 198, 69, 1);
+
+  --login-backdrop-color: rgb(242,232,222);
+  --login-backdrop-image: url('../../assets/images/background-light.png');
+  --login-font-color: var(--font-color);
+  --login-border-color: rgba(0, 0, 0, 0.5);
+  --login-input-backgroung-color: transparent;
+  --login-input-font-color: var(--login-font-color);
+  --login-button-main-color: rgba(255, 255, 255);
+  --login-button-font-color: var(--login-font-color);
+  --login-button-hover-font-color: rgb(0, 0, 0);
+
+  --mainpage-background: rgb(242,232,222);
 }

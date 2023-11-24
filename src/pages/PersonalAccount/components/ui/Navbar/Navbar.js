@@ -1,14 +1,14 @@
 import NavbarElement from '../NavbarElement/NavbarElement'
 import './navbar.css'
-import { ReactComponent as HomeIcon } from '../../../assets/icons/home.svg'
-import { ReactComponent as PaymentIcon } from '../../../assets/icons/money-check.svg'
-import { ReactComponent as CreditIcon } from '../../../assets/icons/piggy-bank.svg'
+import { ReactComponent as HomeIcon } from '../../../../../assets/icons/home.svg'
+import { ReactComponent as PaymentIcon } from '../../../../../assets/icons/money-check.svg'
+import { ReactComponent as CreditIcon } from '../../../../../assets/icons/piggy-bank.svg'
 import { useDispatch, useSelector } from 'react-redux'
-import navbarElements from '../../../enums/navbarElements'
-import { change } from '../../../services/state/display/pageIndexSlice'
-import { invertNavbarVisibility } from '../../../services/state/display/navbarVisibilitySlice'
-import { setTheme } from '../../../services/state/display/themeSlice'
-import { themes } from '../../../enums/theme'
+import navbarElements from '../../../../../enums/navbarElements'
+import { change } from '../../../../../services/state/display/homeTabSlice'
+import { invertNavbarVisibility } from '../../../../../services/state/display/navbarVisibilitySlice'
+import { setTheme } from '../../../../../services/state/display/themeSlice'
+import { themes } from '../../../../../enums/theme'
 
 export default function Navbar() {
   const isShown = useSelector(store => store.navbarVisibility.isShown)

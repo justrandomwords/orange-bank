@@ -1,4 +1,4 @@
-import GradientIcon from '../GradientIcon/GradientIcon';
+import GradientIcon from '../../../../../components/ui/GradientIcon/GradientIcon'
 import './transaction.css'
 
 export default function Transaction(props) {

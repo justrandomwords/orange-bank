@@ -32,4 +32,11 @@ html[theme='dark'] {
 
   --transactions-day-color: rgba(155, 155, 155, 1);
   --positive-payment-color: rgba(87, 198, 69, 1);
+
+  --login-backgroung-color: var(--background-color);
+  --login-backdrop-image: url('../../../assets/images/background-dark.png');
+  --login-font-color: var(--font-color);
+  --login-input-backgroung-color: transparent;
+  --login-input-font-color: var(--login-font-color);
+  --login-input-border-color: rgb(115, 115, 115);
 }

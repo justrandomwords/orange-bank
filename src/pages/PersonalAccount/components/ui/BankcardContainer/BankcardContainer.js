@@ -1,7 +1,7 @@
 import './bankcard-container.css'
 import { useRef, useState } from 'react';
 import useSmoothScroll from 'react-smooth-scroll-hook';
-import { ReactComponent as ArrowIcon } from '../../../assets/icons/angle-down.svg'
+import { ReactComponent as ArrowIcon } from '../../../../../assets/icons/angle-down.svg'
 import Bankcard from '../Bankcard/Bankcard';
 import { useSelector } from 'react-redux';
 
