@@ -16,8 +16,8 @@ export default function BankcardContainer() {
       date={creditCard.date}
       balance={creditCard.balance}
       unit={creditCard.unit}
+      isShown={isShown}
   />)
-
 
   // const ref = useRef(document.body);
  
@@ -44,13 +44,15 @@ export default function BankcardContainer() {
 
 
   return (
-    <div className='cards-container' hidden={!isShown} 
-    ref={scrollContainerRef} 
-    onWheel={horizontalScroll}>
+    <div className='cards-container' hidden={!isShown}>
       <button className='toggle-button active' onClick={updateVisibilityCards}>
         <ArrowIcon/>
       </button>
-      {creditCards}
+      <div className='cards' 
+      ref={scrollContainerRef} 
+      onWheel={horizontalScroll}>
+        {creditCards} 
+      </div>
     </div>
   )
 }

@@ -6,6 +6,8 @@ html[theme='dark'] {
   --font-color: rgb(255, 255, 255);
 
   --background-color: hsl(0, 3%, 6%);
+  --background-image: url('../../../assets/images/background-dark.png');
+
 
   --header-color: var(--secondary-color);
   --header-font-color: var(--font-color);

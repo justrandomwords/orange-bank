@@ -1,7 +1,7 @@
 import './personal-account.css';
 import Header from './components/ui/Header/Header';
 import Navbar from './components/ui/Navbar/Navbar';
-import navbarElements from '../../enums/navbarElements';
+import navbarElements from './enums/navbarElements';
 import Home from './tabs/Home/Home';
 import Payment from './tabs/Payment/Payment';
 import Creadit from './tabs/Credit/Credit';

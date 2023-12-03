@@ -1,9 +1,9 @@
 import GradientIcon from '../../../../../components/ui/GradientIcon/GradientIcon'
-import './operation.css'
+import './quick-operation.css'
 
-export default function Operation(props) {
+export default function QuickOperation(props) {
   return (
-    <div className='operation-container' onClick={props.handleClick}>
+    <div className='quick-operation-container' onClick={props.handleClick}>
       <GradientIcon class='test'/>
       <div>{props.name}</div>
     </div>

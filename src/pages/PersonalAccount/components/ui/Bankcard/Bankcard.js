@@ -1,10 +1,15 @@
 import './bank-card.css'
 
 export default function Bankcard(props) {
+  const isShown = props.isShown !== undefined ? props.isShown : true 
   const cardNumber = props.number.split(' ').map(numberPart => <p>{numberPart}</p>)
 
+  const fontStyle = {
+    fontSize: `${props.fontSize}rem`
+  }
+
   return (
-    <div className='bankcard' id={props.id}>
+    <div className='bankcard' id={props.id} hidden={!isShown} style={fontStyle}>
       <div className='balance-container'>
         <p>
           {props.balance}
@@ -15,7 +20,7 @@ export default function Bankcard(props) {
         <div className='card-number'>
           {cardNumber}
         </div>
-        <div>
+        <div className='date'>
           <p>{props.date}</p>
           <div></div>
         </div>

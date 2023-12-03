@@ -2,7 +2,7 @@ import './home.css'
 import FeatureCard from '../../components/ui/FeatureCard/FeatureCard';
 import { useSelector } from 'react-redux';
 import TransactionCard from '../../components/ui/TransactionCard/TransactionsCard';
-import Operation from '../../components/ui/Operation/Operation';
+import Operation from '../../components/ui/QuickOperation/QuickOperation';
 import BankcardContainer from '../../components/ui/BankcardContainer/BankcardContainer';
 
 
@@ -15,6 +15,8 @@ export default function Home() {
   function test() {
     console.log('test')
   }
+
+  
 
   return (
     <div className='home-page'>

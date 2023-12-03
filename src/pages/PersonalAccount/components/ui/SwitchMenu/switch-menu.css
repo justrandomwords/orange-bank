@@ -1,0 +1,51 @@
+.switch-menu-container {
+  background-color: var(--card-switch-backgound-color);
+  backdrop-filter: blur(0.8rem);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  box-shadow: 0 0 1rem var(--card-switch-shadow-color);
+  padding: 0 1rem;
+  cursor: pointer;
+
+  transition: all 0.4s;
+
+  &[ishidden="true"] {
+    .header {
+      .hide-menu-button {
+        transform: rotate(0deg);
+      }
+    }
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    .header-name {
+      font-size: 1em;
+      margin: 0.5rem 0;
+    }
+
+    .hide-menu-button {
+      height: 1.5rem;
+      width: 1.5rem;
+      aspect-ratio: 1;
+      border-radius: 100%;
+      border: transparent;
+      transform: rotate(180deg);
+
+      transition: transform 0.4s ease-in-out;
+    }
+  }
+
+  .childrens {
+    transition: max-height var(--animation-speed) ease-in-out;
+    overflow: hidden;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}

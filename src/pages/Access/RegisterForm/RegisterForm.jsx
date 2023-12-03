@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { updatePage } from '../../../services/state/display/pageSlice'
 import { pages } from '../../../enums/pages'
 import { useDispatch } from 'react-redux'
-import { register } from '../services/request/access'
+import { login, register } from '../../../services/api/login'
 
 export default function RegisterForm() {
   const dispatch = useDispatch();
@@ -19,14 +19,30 @@ export default function RegisterForm() {
     dispatch(updatePage(pages.Login.id))
   }
 
+  async function tryRegister() {
+    const registerResult = await register(registrationFrom);
+
+    if (registerResult.success) {
+      const loginResult = await login(registrationFrom);
+
+      if (loginResult.success) 
+        dispatch(updatePage(pages.PersonalAccount.id));
+      else 
+        console.log(loginResult.message);
+    }
+    else {
+      console.log(registerResult.message);
+    }
+  };
+
   function confirmForm() {
-    if (registrationFrom.password === registrationFrom.confirmPassword) 
-      register(registrationFrom);
+    if (registrationFrom.password === registrationFrom.confirmPassword) {
+      tryRegister()
+    }
     else
-      console.log('not'); 
-    
-    dispatch(updatePage(pages.PersonalAccount.id));
+      console.log('not register'); 
   }
+
 
   function updateRegistrationFrom(event) {
     const {name, value} = event.target

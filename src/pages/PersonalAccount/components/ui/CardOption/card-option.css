@@ -1,0 +1,8 @@
+.card-option-container {
+  display: grid;
+  grid-template-columns: 10rem 4rem;
+
+  .card-icon {
+    scale: 0.7;
+  }
+}

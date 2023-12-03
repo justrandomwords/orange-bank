@@ -4,7 +4,7 @@ import { ReactComponent as HomeIcon } from '../../../../../assets/icons/home.svg
 import { ReactComponent as PaymentIcon } from '../../../../../assets/icons/money-check.svg'
 import { ReactComponent as CreditIcon } from '../../../../../assets/icons/piggy-bank.svg'
 import { useDispatch, useSelector } from 'react-redux'
-import navbarElements from '../../../../../enums/navbarElements'
+import navbarElements from './../../../enums/navbarElements'
 import { change } from '../../../../../services/state/display/homeTabSlice'
 import { invertNavbarVisibility } from '../../../../../services/state/display/navbarVisibilitySlice'
 import { setTheme } from '../../../../../services/state/display/themeSlice'

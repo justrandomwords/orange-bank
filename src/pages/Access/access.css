@@ -3,8 +3,6 @@
   display: grid;
   justify-items: center;
   align-items: center;
-  background-color: var(--login-backdrop-color);
-  background: var(--login-backdrop-image);
   background-size: 17rem;
   color: var(--login-font-color);
   z-index: 1;
@@ -44,12 +42,16 @@
           border: transparent;
           border-radius: 5rem;
           outline: none;
-          padding: 0.8rem 1rem;
+          padding: 0rem 1rem;
+          margin: 0.8rem 0rem;
           width: 100%;
           box-sizing: border-box;
 
           &::-ms-reveal {
             filter: invert(100%);
+          }
+          &::selection {
+            background-color:transparent;
           }
         }
 
@@ -66,7 +68,7 @@
 
         & input:focus ~ .placeholder,
         & input:invalid ~ .placeholder {
-          transform: translateY(-1.5rem);
+          transform: translateY(-0.8rem);
           font-size: 0.8rem;
         }
       }

@@ -16,9 +16,10 @@
     flex: 1;
     display: flex;
     align-items: end;
-    font-size: 2.2rem;
+    font-size: 2.2em;
     color: var(--card-font-color);
     padding-bottom: 0.2rem;
+
     > p {
       display: flex;
       align-items: first baseline;
@@ -38,11 +39,25 @@
     flex-direction: column;
     padding: 0.7rem 0;
     box-sizing: border-box;
-
+    font-size: 1em;
 
     .card-number {
       display: flex;
       justify-content: space-between;
     }
   }
+
+  &[hidden] {
+    .balance-container {
+      display: none;
+    }
+
+    .info-container{
+      .date {
+        display: none;
+      }
+    }
+  }
+
+
 }

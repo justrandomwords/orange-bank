@@ -2,13 +2,20 @@ import './main.css'
 import { useDispatch } from 'react-redux'
 import { pages } from '../../enums/pages'
 import { updatePage } from '../../services/state/display/pageSlice'
-import { setIsLogin } from '../../services/state/display/accessTabSlice'
+import { checkToken } from '../../services/api/checkToken'
 
 
 function LoginButtons() {
   const dispatch = useDispatch()
 
-  function OpenLoginPage(isLoginform) {
+  async function openPage(isLoginform) {
+    const isLogin = await checkToken()
+
+    if (isLogin) {
+      dispatch(updatePage(pages.PersonalAccount.id))
+      return;
+    }
+
     if (isLoginform)
       dispatch(updatePage(pages.Login.id))
     else
@@ -17,8 +24,8 @@ function LoginButtons() {
 
   return (
     <div className='buttons-container'>
-      <button className='button login' onClick={() => OpenLoginPage(true)}>Увійти</button>
-      <button className='button sinup' onClick={() => OpenLoginPage(false)}>Зареєструатися</button>
+      <button className='button login' onClick={() => openPage(true)}>Увійти</button>
+      <button className='button sinup' onClick={() => openPage(false)}>Зареєструатися</button>
     </div>
   )
 }

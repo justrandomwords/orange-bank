@@ -2,16 +2,16 @@
 @import url('./components/variables/variables.css');
 @import url('./components/variables/colors.css');
 
-p {
+p, h4 {
   margin: 0;
 }
 
 body {
   margin: 0;
-  /* background-image: url('./assets/images/b5.jpg'); */
-  background-size: 14rem;
   background-color: var(--background-color);
-  background-blend-mode: overlay;
+  background: var(--background-image);
+  background-size: 17rem;
+  animation: slideBackground 1000s linear infinite;
 }
 
 html {
@@ -19,7 +19,16 @@ html {
 }
 * {
   font-family: Rubik;
-  line-height: 1.4rem;
+  line-height: 100%;
 }
 
 .App {}
+
+@keyframes slideBackground {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: -100% 100%;
+  }
+}

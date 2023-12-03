@@ -7,7 +7,11 @@ html {
   --accent-color: hwb(33 40% 0%);
   --font-color: rgb(255, 255, 255);
 
-  --background-color: hsl(50, 50%, 80%);
+  --background-color: rgb(242,232,222);
+  --background-image: url('../../assets/images/background-light.png');
+
+
+  --mainpage-background: rgb(242,232,222);
 
   --header-color: var(--secondary-color);
   --header-font-color: var(--font-color);
@@ -36,7 +40,6 @@ html {
   --positive-payment-color: rgba(87, 198, 69, 1);
 
   --login-backdrop-color: rgb(242,232,222);
-  --login-backdrop-image: url('../../assets/images/background-light.png');
   --login-font-color: var(--font-color);
   --login-border-color: rgba(0, 0, 0, 0.5);
   --login-input-backgroung-color: transparent;
@@ -45,5 +48,20 @@ html {
   --login-button-font-color: var(--login-font-color);
   --login-button-hover-font-color: rgb(0, 0, 0);
 
-  --mainpage-background: rgb(242,232,222);
+  --payment-center-background-color: rgb(242,232,222);
+  --payment-center-border-color: hsl(30, 43%, 81%);
+  --payment-center-placeholder-color: hsl(30, 43%, 81%);
+  --transfer-button-background-color: green;
+  --transfer-button-font-color: white;
+  --payment-description-background-color: transparent;
+  --payment-description-border-color: transparent;
+
+  --card-switch-backgound-color: transparent;
+  --card-switch-shadow-color: var(--login-border-color);
+
+  --recipient-background-color: var(--card-color);
+  --recipient-font-color: white;
+  --recipient-category-name-font-color: rgb(154, 154, 154);
+  --recipient-input-font-color: white;
+  --recipient-input-placeholder-font-color: rgb(167, 167, 167);
 }

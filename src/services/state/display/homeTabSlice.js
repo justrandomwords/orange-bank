@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import navbarElements from "../../../enums/navbarElements";
+import navbarElements from '../../../pages/PersonalAccount/enums/navbarElements';
 
 const homeTabSlice = createSlice({
   name: 'page-index',

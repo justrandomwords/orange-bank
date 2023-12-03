@@ -10,7 +10,6 @@
   gap: var(--gap);
   padding: 1.5rem 2.2rem;
   
-
   .function-container {
     display: grid;
     grid-template-columns: 1fr 1fr;

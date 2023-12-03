@@ -1,3 +1,11 @@
+:root {
+  & .cards-container[hidden] {
+    background-color: red;
+    --cards-container-height: 3.5rem;
+  }
+}
+
+
 .cards-container {
   flex: 1;
   display: flex;
@@ -5,7 +13,15 @@
   min-height: var(--cards-container-height);
   overflow-x: auto;
 
+  .cards {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    border-radius: var(--border-radius);
+  }
+
   .toggle-button {
+    top: 0; bottom: 0; left: 0;
     border: transparent;
     outline: none;
     background-color: var(--card-color);
@@ -27,11 +43,7 @@
     }
   }
 
-  &[hidden] {
-    background-color: red;
-  }
-
-  &::-webkit-scrollbar {
-    /* display: none; */
+  ::-webkit-scrollbar {
+    display: none;
   }
 }

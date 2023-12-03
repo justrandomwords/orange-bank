@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { updatePage } from '../../../services/state/display/pageSlice'
 import { pages } from '../../../enums/pages'
 import { useDispatch } from 'react-redux'
-import { login } from '../services/request/access'
+import { login } from '../../../services/api/login'
 
 export default function LoginForm() {
   const dispatch = useDispatch();
@@ -16,9 +16,13 @@ export default function LoginForm() {
     dispatch(updatePage(pages.Register.id))
   }
 
-  function confirmForm() {
-    login();
-    dispatch(updatePage(pages.PersonalAccount.id));
+  async function confirmForm() {
+    const loginResult = await login(loginFrom);
+
+    if (loginResult.success) 
+      dispatch(updatePage(pages.PersonalAccount.id));
+    else 
+      console.log(loginResult.message);
   }
 
   function updateRegistrationFrom(event) {
