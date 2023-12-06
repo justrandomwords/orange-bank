@@ -1,5 +1,16 @@
 :root {
   --card-size-coefficient: 5;
+  --_bankcard-height: 53.98;
+  --_bankcard-width: 85.61;
+  --_bankcard-default-height: 53.98rem;
+  --_bankcard-default-width: 85.61rem;
+
+  --bankcard-aspect-ratio: calc(var(--_bankcard-width) / var(--_bankcard-height));
+  --bankcard-default-height: calc(var(--_bankcard-default-height) / var(--card-size-coefficient));
+  --bankcard-default-width: calc(var(--_bankcard-default-width) / var(--card-size-coefficient));
+
+
   --border-radius: calc(3.18rem * 3/6);
   --animation-speed: 0.4s;
+  
 }

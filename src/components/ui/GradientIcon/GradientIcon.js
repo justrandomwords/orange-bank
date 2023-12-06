@@ -2,7 +2,7 @@ import './gradient-icon.css'
 import { getTwoSimilarColorsHWB } from '../../colorGenerator';
 
 export default function GradientIcon(props) {
-  const colors = getTwoSimilarColorsHWB()
+  const colors = getTwoSimilarColorsHWB(props.textSeed)
 
   const iconStyle = {
     ['--icon-first-color']: colors[0],

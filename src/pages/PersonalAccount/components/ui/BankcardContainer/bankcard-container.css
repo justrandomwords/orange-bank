@@ -1,49 +1,87 @@
-:root {
-  & .cards-container[hidden] {
-    background-color: red;
-    --cards-container-height: 3.5rem;
-  }
-}
-
-
 .cards-container {
-  flex: 1;
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: min-content 1fr;
   gap: 2rem;
-  min-height: var(--cards-container-height);
-  overflow-x: auto;
+  height: var(--bankcard-default-height);
 
-  .cards {
-    display: flex;
-    gap: 2rem;
-    overflow-x: auto;
-    border-radius: var(--border-radius);
+  transition: height var(--animation-speed);
+
+  &[isShown="false"] {
+    --height: 3rem;
+
+    height: var(--height);
+
+    .toggle-button {
+      height: var(--height);
+
+      & > * {
+        width: 1.2rem;
+        rotate: 180deg;
+      }
+    }
   }
 
+  .cards-scroll-wraper {
+    overflow: hidden;
+    border-radius: var(--border-radius);
+
+    .cards {
+      display: flex;
+      grid-auto-flow: column;
+      gap: 2rem;
+      cursor: grab;
+
+      transition: transform var(--animation-speed);
+
+      .empty-space {
+        height: 100px;
+        min-width: 100%;
+      }
+      
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      &.grabbing {
+        transition: none;
+        cursor: grabbing;
+
+        & .bankcard {
+          cursor: grabbing;
+        }
+      }
+    }
+  }
+    
   .toggle-button {
-    top: 0; bottom: 0; left: 0;
+    justify-content: center;
     border: transparent;
     outline: none;
     background-color: var(--card-color);
     border-radius: var(--border-radius);
-    padding: 1rem;
     cursor: pointer;
-
+    height: var(--bankcard-default-height);
+    min-width: 4rem;
+    
+    transition: height var(--animation-speed);
+    
     > * {
       fill: var(--card-icon-color);    
-      height: 100%;
-      width: 2rem;
+      height: 1.6rem;
+      width: 1.6rem;
+      filter: brightness(0) invert(1);
       transform: translateY(0.3rem);
+      
+      transition: 
+      width var(--animation-speed),
+      rotate var(--animation-speed);
     }
-
+    
     &.active {
       > * {
         transform: scaleY(-1);
       }
     }
-  }
-
-  ::-webkit-scrollbar {
-    display: none;
   }
 }

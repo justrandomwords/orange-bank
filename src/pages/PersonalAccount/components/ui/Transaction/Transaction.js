@@ -5,7 +5,7 @@ export default function Transaction(props) {
 
   return (
     <div className='transaction-container'>
-      <GradientIcon/>
+      <GradientIcon textSeed={props.name}/>
       <div className='main-info'>
         <p className='name'>{props.name}</p>
         <p className='description'>{props.description}</p>

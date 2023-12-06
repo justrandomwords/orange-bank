@@ -13,7 +13,6 @@
     transition: margin-top var(--animation-speed);
 
     .payment-card {
-      height: calc(var(--cards-container-height) * 1.2);
     }
   }
 

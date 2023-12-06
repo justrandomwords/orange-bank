@@ -63,13 +63,26 @@ export default function Payment() {
     }))
   }
 
+  function getDescriptionStyle(scrollHeight=20) {
+    const height = Math.round(scrollHeight / 20);
+    
+    return `${height*1.2}rem`
+  }
+
+  const descriptionRef = useRef(null);
+
   function updateDescription(e) {
+    const descriptionStyle = descriptionRef.current.style;
+	
+    descriptionStyle.height = getDescriptionStyle()
+    descriptionStyle.height = getDescriptionStyle(e.target.scrollHeight)
+    
     setPaymentForm(prevPaymentForm => ({
       ...prevPaymentForm,
-      description: e.target.innerHTML
+      description: e.target.value
     }))
   }
-  
+
   function updateRecipientCardNumber(value) {
     setPaymentForm(prevPaymentForm => ({
       ...prevPaymentForm,
@@ -93,11 +106,12 @@ export default function Payment() {
         options={cardsOptions}
       >
         <Bankcard 
+          class='bigger-bankcard'
           number={currentCard.number}
           date={currentCard.date}
           balance={currentCard.balance}
           unit={currentCard.unit}
-          fontSize={1.2}
+          scale={1.2}
         />
       </CardColumn>
       <div className='center'>
@@ -116,12 +130,13 @@ export default function Payment() {
           <button className='transfer-button'>Переказати</button>
         </div>
         <div className='description-wrapper'>
-          <div 
+          <textarea 
             placeholder='Опис' 
             className='description-textarea'
             value={paymentForm.description}
-            contentEditable
-            onInput={updateDescription}
+            onChange={updateDescription}
+            ref={descriptionRef}
+            maxlength="256"
           />
         </div>
       </div>
@@ -138,6 +153,3 @@ export default function Payment() {
     </div>
   )
 }
-
-//38
-//26

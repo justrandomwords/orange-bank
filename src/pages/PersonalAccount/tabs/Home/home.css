@@ -1,19 +1,26 @@
 :root {
   --gap: 1.5rem;
-  --cards-container-height: calc(53.98rem / var(--card-size-coefficient));
 }
 
 .home-page {
-  display: grid;
-  grid-template-rows: var(--cards-container-height) 1fr;
+  display: flex;
+  width: 100%;
   flex-direction: column;
   gap: var(--gap);
   padding: 1.5rem 2.2rem;
+  box-sizing: border-box;
+
+  transition: grid-template-rows var(--animation-speed);
+
+  &[isCardsShown="false"] {
+    grid-template-rows: 2rem 1fr;
+  }
   
   .function-container {
+    flex: 1;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 13rem 1fr;
     gap: var(--gap);
 
     & > *:nth-child(2) {

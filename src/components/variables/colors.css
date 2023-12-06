@@ -64,4 +64,7 @@ html {
   --recipient-category-name-font-color: rgb(154, 154, 154);
   --recipient-input-font-color: white;
   --recipient-input-placeholder-font-color: rgb(167, 167, 167);
+
+  --top-shadow: 0.3rem 0.3rem 0.5rem 0.005rem hsla(29, 43%, 75%, 0.8);
+  --bottom-shadow: -0.3rem -0.3rem 0.5rem hsl(30, 100%, 95%);
 }

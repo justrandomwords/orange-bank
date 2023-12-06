@@ -1,15 +1,20 @@
-import './bank-card.css'
+import './bankcard.css'
 
 export default function Bankcard(props) {
   const isShown = props.isShown !== undefined ? props.isShown : true 
-  const cardNumber = props.number.split(' ').map(numberPart => <p>{numberPart}</p>)
+  const cardNumberParts = props.number.split(' ')
+  let cardNumber = cardNumberParts.map(numberPart => <p>{numberPart}</p>);
 
-  const fontStyle = {
-    fontSize: `${props.fontSize}rem`
+  if (!isShown) {
+    const hiddenNumberElement = <p className='hidden-number'>••••</p>;
+    cardNumber[0] = hiddenNumberElement;
+    cardNumber[1] = hiddenNumberElement;
+    cardNumber[2] = hiddenNumberElement;
   }
+  
 
   return (
-    <div className='bankcard' id={props.id} hidden={!isShown} style={fontStyle}>
+    <div className={`bankcard ${props.class}`} id={props.id} hidden={!isShown}>
       <div className='balance-container'>
         <p>
           {props.balance}

@@ -33,5 +33,5 @@ export const cardPlug = [
     unit: 'UAH', 
     number: '4385 4538 3458 5345',
     date: '04/08'
-  }
+  },
 ]
