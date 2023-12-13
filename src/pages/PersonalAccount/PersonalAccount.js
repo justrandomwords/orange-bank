@@ -7,12 +7,12 @@ import Payment from './tabs/Payment/Payment';
 import Creadit from './tabs/Credit/Credit';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCards } from '../../services/state/user/cards';
-import { getCards, getTransactionHistory } from '../../services/api/userData';
+import { getCards, getTransactionHistory, getUserData } from '../../services/api/userData';
 import { setTransactionHistory } from '../../services/state/user/transactionHistory';
+import { useEffect } from 'react';
 
 export default function PersonalAccount() {
   const dispatch = useDispatch();
-  dispatch(setCards(getCards()));
   dispatch(setTransactionHistory(getTransactionHistory()))
 
   const homeTabIndex = useSelector(store => store.homeTab.index);
@@ -29,6 +29,19 @@ export default function PersonalAccount() {
         return <Home/>
     }
   }
+
+  async function updateUserData() {
+    const userData = await getUserData()
+
+    
+    if (userData.success) {
+      dispatch(setCards(userData.cardsData));
+    } 
+  }
+
+  useEffect(() => {
+    updateUserData()
+  }, [])
 
   return (
     <div className='personal-account-container'>

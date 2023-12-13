@@ -2,7 +2,7 @@ import './bankcard.css'
 
 export default function Bankcard(props) {
   const isShown = props.isShown !== undefined ? props.isShown : true 
-  const cardNumberParts = props.number.split(' ')
+  const cardNumberParts = props.number.match(/\d{4}/g)
   let cardNumber = cardNumberParts.map(numberPart => <p>{numberPart}</p>);
 
   if (!isShown) {

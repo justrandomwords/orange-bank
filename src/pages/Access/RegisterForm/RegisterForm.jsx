@@ -3,7 +3,8 @@ import { useState } from 'react'
 import { updatePage } from '../../../services/state/display/pageSlice'
 import { pages } from '../../../enums/pages'
 import { useDispatch } from 'react-redux'
-import { login, register } from '../../../services/api/login'
+import { login, register } from '../../../services/api/authorization'
+import ModernInput from '../components/ui/ModernInput/ModernInput'
 
 export default function RegisterForm() {
   const dispatch = useDispatch();
@@ -14,38 +15,25 @@ export default function RegisterForm() {
     password: '',
     confirmPassword: '',
   })
+  const [messageFrom, setMessageFrom] = useState({
+    name: '',
+    surname: '',
+    login: '',
+    password: '',
+    confirmPassword: '',
+  })
 
-  function switchAccessForm() {
-    dispatch(updatePage(pages.Login.id))
+  function updateMessage(name, message) {
+    setMessageFrom(prevMessageFrom => ({
+      ...prevMessageFrom,
+      [name]: message,
+    }))
   }
-
-  async function tryRegister() {
-    const registerResult = await register(registrationFrom);
-
-    if (registerResult.success) {
-      const loginResult = await login(registrationFrom);
-
-      if (loginResult.success) 
-        dispatch(updatePage(pages.PersonalAccount.id));
-      else 
-        console.log(loginResult.message);
-    }
-    else {
-      console.log(registerResult.message);
-    }
-  };
-
-  function confirmForm() {
-    if (registrationFrom.password === registrationFrom.confirmPassword) {
-      tryRegister()
-    }
-    else
-      console.log('not register'); 
-  }
-
 
   function updateRegistrationFrom(event) {
     const {name, value} = event.target
+
+    updateMessage(name, '')
 
     setRegistrationFrom(prevForm => ({
       ...prevForm,
@@ -53,63 +41,86 @@ export default function RegisterForm() {
     }))
   }
 
+  function confirmForm() {
+    let canRegister = true;
+
+    if (registrationFrom.confirmPassword !== registrationFrom.password){
+      updateMessage('confirmPassword', 'Паролі не співпадають')
+      canRegister = false;
+    } 
+
+    for (let key in registrationFrom) {
+      if(registrationFrom[key] === '') {
+        updateMessage(key, 'Це поле необхідно заповнити')
+        canRegister = false;
+      }
+    }
+
+    if(canRegister) {
+      registration()
+    }
+  }
+
+  function switchAccessForm() {
+    dispatch(updatePage(pages.Login.id))
+  }
+
+  async function registration() {
+    const registerResult = await register(registrationFrom);
+
+    if (registerResult.success) {
+      dispatch(updatePage(pages.PersonalAccount.id));
+    }
+    else {
+      console.log(registerResult.message);
+    }
+  };
+
   return (
     <div className='access-container'>
       <div className='access-form'>
         <h1 className='header'>Реєстрація</h1>
         <div className='input-container'>
-          <div placeholder="Ім'я">
-            <input 
-              className='form-input'
-              name='name'
-              value={registrationFrom.name}
-              onChange={updateRegistrationFrom}
-              pattern="[a-zA-Z0-9]{16}"
-            />
-            <p className='placeholder'>Ім'я</p>
-          </div>
-          <div placeholder='Прізвище'>
-            <input 
-              className='form-input'
-              name='surname'
-              value={registrationFrom.surname}
-              onChange={updateRegistrationFrom}
-              pattern="[a-zA-Z0-9]{16}"
-            />
-            <p className='placeholder'>Прізвище</p>
-          </div>
-          <div placeholder='Логін'>
-            <input 
-              className='form-input'
-              name='login'
-              value={registrationFrom.login}
-              onChange={updateRegistrationFrom}
-              pattern="[a-zA-Z0-9]{16}"
-            />
-            <p className='placeholder'>Логін</p>
-          </div>
-          <div placeholder='Пароль'>
-            <input 
-              className='form-input'
-              type='password'
-              name='password'
-              value={registrationFrom.password}
-              onChange={updateRegistrationFrom}
-              pattern="[a-zA-Z0-9]{16}"
-            />
-            <p className='placeholder'>Пароль</p>
-          </div>
-          <div placeholder='Підтвердити пароль'>
-            <input 
-              className='form-input'
-              type='password'
-              name='confirmPassword'
-              value={registrationFrom.confirmPassword}
-              onChange={updateRegistrationFrom}
-              pattern="[a-zA-Z0-9]{16}"
-            />
-            <p className='placeholder'>Підтвердити пароль</p>
-          </div>
+          <ModernInput
+            name='name'
+            placeholder="Ім'я"
+            type='name'
+            value={registrationFrom.name}
+            handleChange={updateRegistrationFrom}
+            message={messageFrom.name}
+          />
+          <ModernInput
+            name='surname'
+            placeholder='Прізвище'
+            type='name'
+            value={registrationFrom.surname}
+            handleChange={updateRegistrationFrom}
+            message={messageFrom.surname}
+          />
+          <ModernInput
+            name='login'
+            placeholder='Логін'
+            type='login'
+            value={registrationFrom.login}
+            handleChange={updateRegistrationFrom}
+            message={messageFrom.login}
+          />
+          <ModernInput
+            name='password'
+            placeholder='Пароль'
+            type='password'
+            value={registrationFrom.password}
+            handleChange={updateRegistrationFrom}
+            message={messageFrom.password}
+          />
+          <ModernInput
+            name='confirmPassword'
+            placeholder='Підтвердити пароль'
+            type='password'
+            value={registrationFrom.confirmPassword}
+            handleChange={updateRegistrationFrom}
+            message={messageFrom.confirmPassword}
+          />
         </div>
         <div className='from-bottom'>
           <button 

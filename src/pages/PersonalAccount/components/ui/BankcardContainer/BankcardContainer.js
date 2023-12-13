@@ -95,10 +95,13 @@ export default function BankcardContainer() {
         onMouseUp={stopDragging}
         ref={dragContainerRef}>
           {creditCards}
-          <button className='toggle-button active' 
-          onClick={updateIsShown}>
-            <img src={plusIcon}/>
-          </button>
+          {
+            cards.length > 0 &&
+            <button className='toggle-button active' 
+            onClick={updateIsShown}>
+              <img src={plusIcon}/>
+            </button>
+          }
           <div className='empty-space'/>
         </div>
       </div>

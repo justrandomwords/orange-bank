@@ -1,38 +1,74 @@
 import './payment.css'
-import { useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import CardOption from '../../components/ui/CardOption/CardOption';
 import CardColumn from '../../components/ui/CardColumn/CardColumn';
 import Bankcard from '../../components/ui/Bankcard/Bankcard';
 import RecipientInput from '../../components/ui/RecipientInput/RecipientInput';
+import { createPay } from '../../../../services/api/payment';
+import { getUserData } from '../../../../services/api/userData';
+import { setCards } from '../../../../services/state/user/cards';
 
 export default function Payment() {
+  const dispatch = useDispatch();
+  const cards = useSelector(store => store.cards.cards);
+
+  const [ transactionAmoutFormatted, setTransactionAmoutFormatted ] = useState('');
+
   const [ paymentForm, setPaymentForm ] = useState({
-    cardNumber: '',
-    transactionAmout: '',
+    card: cards[0],
+    transactionAmout: +transactionAmoutFormatted,
     description: '',
     recipientCardNumber: '',
     recipientPhone: ''
   })
 
-  function updateAmout(e) {
+  async function sendPay() {
+    const responde = await createPay(paymentForm);
 
-    const value = e.target.value.replace(/\D/g, '');
-
-    if (value !== '') {
-      setAmountStyle({
-        width: getlength(+value)
-      });
+    if (responde.success) {
+      console.log('ypa');
     }
 
+    const userData = await getUserData()
+
+    if (userData.success) {
+      dispatch(setCards(userData.cardsData));
+    } 
+  }
+
+  function updateCurrentCard(cardNumber) {
+    const newCard = cards.find(card => card.number === cardNumber)
+    setPaymentForm(prevPaymentForm => ({
+      ...prevPaymentForm,
+      card: newCard
+    }))
+  }
+
+  useEffect(() => {
+    updateCurrentCard(paymentForm.card.number)
+  }, [cards])
+
+  const cardsOptions = cards.map(card => 
+    <CardOption cardData={card} 
+      handleClick={() => updateCurrentCard(card.number)}
+    />
+  )
+
+  function updateAmout(e) {
+    const amount = e.target.value.replace(/\D/g, '');
 
     setAmountStyle({
-      width: getlength(+value)
+      width: getlength(+amount)
     });
 
+    console.log(paymentForm.transactionAmout);
+    console.log(amount);
+
+    setTransactionAmoutFormatted(amount.replace(/(\d)(?=(\d{3})+$)/g, '$1 '));
     setPaymentForm(prevPaymentFomr => ({
       ...prevPaymentFomr,
-      transactionAmout: value.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1 ')
+      transactionAmout: +amount
     }))
   }
 
@@ -44,23 +80,6 @@ export default function Payment() {
     const test = number.toString().length * 2.6;
 
     return `${test}rem`;
-  }
-
-  const cards = useSelector(store => store.cards.cards)
-  const [ currentCard, setCurrentCard] = useState(cards[0])
-  const cardsOptions = cards.map(card => 
-    <CardOption cardData={card} 
-      handleClick={() => updateCurrentCard(card.number)}
-    />
-  )
-
-  function updateCurrentCard(cardNumber) {
-    const newCard = cards.find(card => card.number === cardNumber)
-    setCurrentCard(newCard)
-    setPaymentForm(prevPaymentForm => ({
-      ...prevPaymentForm,
-      cardNumber: newCard.number
-    }))
   }
 
   function getDescriptionStyle(scrollHeight=20) {
@@ -107,10 +126,10 @@ export default function Payment() {
       >
         <Bankcard 
           class='bigger-bankcard'
-          number={currentCard.number}
-          date={currentCard.date}
-          balance={currentCard.balance}
-          unit={currentCard.unit}
+          number={paymentForm.card.number}
+          date={paymentForm.card.date}
+          balance={paymentForm.card.balance}
+          unit={paymentForm.card.unit}
           scale={1.2}
         />
       </CardColumn>
@@ -118,7 +137,7 @@ export default function Payment() {
         <div className='balance-wrapper'>
           <input 
             className='balance' 
-            value={paymentForm.transactionAmout} 
+            value={transactionAmoutFormatted} 
             onChange={updateAmout}
             placeholder='0'
             style={amountStyle}
@@ -127,7 +146,7 @@ export default function Payment() {
           <div id="width-determinator">{paymentForm.transactionAmout}</div>
         </div>
         <div className='actions'>
-          <button className='transfer-button'>Переказати</button>
+          <button className='transfer-button' onClick={sendPay}>Переказати</button>
         </div>
         <div className='description-wrapper'>
           <textarea 

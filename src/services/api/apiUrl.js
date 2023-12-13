@@ -1,1 +1,1 @@
-export const apiUrl = 'http://localhost/orangeBank/';
+export const apiUrl = 'http://back-orangebank.hhos.net';

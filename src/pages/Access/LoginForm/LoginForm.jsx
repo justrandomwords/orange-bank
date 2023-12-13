@@ -3,7 +3,8 @@ import { useState } from 'react'
 import { updatePage } from '../../../services/state/display/pageSlice'
 import { pages } from '../../../enums/pages'
 import { useDispatch } from 'react-redux'
-import { login } from '../../../services/api/login'
+import { login, register } from '../../../services/api/authorization'
+import ModernInput from '../components/ui/ModernInput/ModernInput'
 
 export default function LoginForm() {
   const dispatch = useDispatch();
@@ -11,12 +12,60 @@ export default function LoginForm() {
     login: '',
     password: '',
   })
+  const [messageFrom, setMessageFrom] = useState({
+    login: '',
+    password: '',
+  })
+
+  function updateMessage(name, message) {
+    setMessageFrom(prevMessageFrom => ({
+      ...prevMessageFrom,
+      [name]: message,
+    }))
+  }
+
+  function updatePassword(event) {
+    const value = event.target.value;
+    updateMessage('password', '');
+    
+    const filteredValue = value.replace(/[^a-zA-Z0-9!@#$%^&*()_+{}\[\]:;<>,.?\/\\=|\-'"]/g, '');
+
+    setLoginFrom(prevForm => ({
+      ...prevForm,
+      password: filteredValue
+    }))
+  }
+
+  function updateLogin(event) {
+    const value = event.target.value
+    updateMessage('login', '')
+
+    setLoginFrom(prevForm => ({
+      ...prevForm,
+      login: value
+    }))
+  }
+
+  function confirmForm() {
+    let canLogin = true;
+
+    for (let key in loginFrom) {
+      if(loginFrom[key] === '') {
+        updateMessage(key, 'Це поле необхідно заповнити')
+        canLogin = false;
+      }
+    }
+
+    if (canLogin) {
+      authorization()
+    }
+  }
 
   function switchAccessForm() {
     dispatch(updatePage(pages.Register.id))
   }
 
-  async function confirmForm() {
+  async function authorization() {
     const loginResult = await login(loginFrom);
 
     if (loginResult.success) 
@@ -25,41 +74,27 @@ export default function LoginForm() {
       console.log(loginResult.message);
   }
 
-  function updateRegistrationFrom(event) {
-    const {name, value} = event.target
-
-    setLoginFrom(prevForm => ({
-      ...prevForm,
-      [name]: value
-    }))
-  }
-
   return (
     <div className='access-container'>
       <div className='access-form'>
         <h1 className='header'>Вхід</h1>
         <div className='input-container'>
-          <div>
-            <input 
-              className='form-input'
-              name='login'
-              value={loginFrom.login}
-              onChange={updateRegistrationFrom}
-              pattern="[a-zA-Z0-9]{16}"
-            />
-            <p className='placeholder'>Логін</p>
-          </div>
-          <div>
-            <input 
-              className='form-input'
-              type='password'
-              name='password'
-              value={loginFrom.password}
-              onChange={updateRegistrationFrom}
-              pattern="[a-zA-Z0-9]{16}"
-            />
-            <p className='placeholder'>Пароль</p>
-          </div>
+          <ModernInput
+            name='login'
+            placeholder='Логін'
+            type='login'
+            value={loginFrom.login}
+            handleChange={updateLogin}
+            message={messageFrom.login}
+          />
+          <ModernInput
+            name='password'
+            placeholder='Пароль'
+            type='password'
+            value={loginFrom.password}
+            handleChange={updatePassword}
+            message={messageFrom.password}
+          />
         </div>
         <div className='from-bottom'>
           <button 
