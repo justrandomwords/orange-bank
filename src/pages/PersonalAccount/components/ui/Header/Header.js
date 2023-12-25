@@ -4,15 +4,33 @@ import temporaryImage from '../../../../../temporary/1.jpg'
 import { useDispatch } from 'react-redux'
 import { updatePage } from '../../../../../services/state/display/pageSlice'
 import { pages } from '../../../../../enums/pages'
+import { useState } from 'react'
 
 
-function ProfileImage() {
+function ProfileButton() {
+  const [ isOptionShown, setIsOptionShown ] = useState(false);
+
+  function updateIsOptionShown() {
+    setIsOptionShown(prevCondition => !prevCondition)
+  }
+
   return (
-    <div className='profile-image-container'>
-      <img className='profile-image' src={temporaryImage}/>
+    <div className='profile-button-container'>
+      <button 
+      className='profile-image-wrapper' 
+      onClick={updateIsOptionShown} 
+      onBlur={() => setIsOptionShown(false)}>
+        <img className='profile-image' src={temporaryImage}/>
+      </button>
+      <div className='options-wrapper' shown={`${isOptionShown}`}>
+        <div className='name-button'>Денис Курп'як</div>
+        <button>Налаштування</button>
+        <button className='quit-button'>Вийти</button>
+      </div>
     </div>
   )
 }
+
 
 export default function Header() {
   const dispatch = useDispatch();
@@ -29,7 +47,7 @@ export default function Header() {
         </div>
         <p className='logo-name'>Bank</p>
       </div>
-      <ProfileImage/>
+      <ProfileButton/>
     </header>
   )
 }

@@ -5,6 +5,7 @@
   align-items: center;
   justify-content: space-between;
   height: 3rem;
+  z-index: 1;
   background-color: var(--header-color);
   color: var(--header-font-color);
   padding: 0.5rem 1rem;
@@ -32,14 +33,80 @@
       font-weight: bold;
     }
   }
+}
 
-  .profile-image-container {
+.profile-button-container {
+  position: relative;
+  height: 100%;
+
+  .profile-image-wrapper {
     height: 100%;
+    background-color: transparent;
+    border: transparent;
+    outline: none;
+    cursor: pointer;
     
     .profile-image {
       height: 100%;
       aspect-ratio: 1;
       border-radius: 100%;
     }
+  }
+
+  .options-wrapper {
+    position: absolute;
+    right: 0; top: 3rem;
+    display: grid;
+    gap: 0.8rem;
+    padding: 1rem 0.8rem;
+    min-width: 11rem;
+    background-color: var(--header-color);
+    border-radius: calc(var(--border-radius)/3*2);
+    transform: translateX(15rem);
+    font-size: 1.1rem;
+
+    transition: transform calc(var(--animation-speed)/3*2);
+
+    &[shown="true"] {
+      transform: translateX(0rem);
+    }
+
+    .name-button {
+      font-weight: 600;
+      padding: 0.5rem 0.8rem;
+    }
+
+    button {
+      background-color: transparent;
+      outline: none;
+      border: transparent;
+      color: white;
+      font-size: 1.1rem;
+      text-align: left;
+      border-radius: calc(var(--border-radius)/3);
+      padding: 0.5rem 0.8rem;
+      cursor: pointer;
+
+      transition:
+      background-color calc(var(--animation-speed)/2)
+      color calc(var(--animation-speed)/2);
+
+      &:hover {
+        background-color: rgb(221, 221, 221);
+        color: black;
+      }
+    }
+
+    .quit-button {
+      color: rgb(255, 81, 81);
+      transition: all 0.2s;
+
+      &:hover {
+        background-color: rgb(255, 81, 81);
+        color: black;
+      }
+    }
+
+
   }
 }
