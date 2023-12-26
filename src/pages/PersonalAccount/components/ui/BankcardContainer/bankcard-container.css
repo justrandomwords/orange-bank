@@ -66,6 +66,12 @@
     
     transition: height var(--animation-speed);
     
+    .plus-icon {
+      & * {
+        background-color: red;
+      }
+    }
+
     > * {
       fill: var(--card-icon-color);    
       height: 1.6rem;

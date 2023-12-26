@@ -1,7 +1,7 @@
 import './bankcard-container.css'
 import { useRef, useState } from 'react';
 import { ReactComponent as ArrowIcon } from '../../../../../assets/icons/angle-down.svg'
-import plusIcon from '../../../../../assets/icons/plus.png'
+import { ReactComponent as PlusIcon } from '../../../../../assets/icons/plus.svg'
 import Bankcard from '../Bankcard/Bankcard';
 import { useSelector } from 'react-redux';
 
@@ -99,7 +99,7 @@ export default function BankcardContainer() {
             cards.length > 0 &&
             <button className='toggle-button active' 
             onClick={updateIsShown}>
-              <img src={plusIcon}/>
+              <PlusIcon className='plus-icon'/>
             </button>
           }
           <div className='empty-space'/>
