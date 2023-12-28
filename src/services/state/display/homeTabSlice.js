@@ -7,12 +7,12 @@ const homeTabSlice = createSlice({
     index: navbarElements.Home
   },
   reducers: {
-    change: (state, action) => {
+    changeHomeTab: (state, action) => {
       state.index = action.payload;
     }
   }
 });
 
-export const { change } = homeTabSlice.actions;
+export const { changeHomeTab } = homeTabSlice.actions;
 
 export default homeTabSlice.reducer;

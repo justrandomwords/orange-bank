@@ -1,0 +1,115 @@
+.modern-input-container {
+  --_modern-input-color: var(--updated-modern-input-color, var( --modern-input-color));
+
+  position: relative;
+  padding-top: 0.9rem;
+
+  .input-wrapper {
+    display: flex;
+    height: 2.3rem;
+
+    .form-input {
+      background-color: var(--modern-input-background-color);
+      color: var(--_modern-input-color);
+      border: transparent;
+      border-radius: 5rem;
+      outline: none;
+      padding: 0rem 1rem;
+      width: 100%;
+      font-size: 1rem;
+      box-sizing: border-box;
+
+
+      &::-ms-reveal {
+        filter: invert(100%);
+      }
+      &::selection {
+        background-color:transparent;
+      }
+    }
+  }
+
+
+  .placeholder {
+    content: attr(placeholder);
+    position: absolute;
+    pointer-events: none;
+    top: 1.7rem; left: 1rem; 
+    color: var(--_modern-input-color);
+    transition: 
+      transform calc(var(--animation-speed) / 2),
+      font-size calc(var(--animation-speed) / 2);
+
+    &[ishidden] {
+      transform: translateY(-1.5rem);
+      font-size: 0.8rem;
+    }
+  }
+
+  .underline {
+    position: relative;
+    padding: 0 0.5rem;
+
+    .line {
+      content: '';
+      position: absolute;
+      left: 0rem; top: 0rem;
+      height: 0.1rem;
+      width: 0rem;
+      display: flex;
+      align-items: center;
+      background-color: var(--_modern-input-color);
+      font-size: 0.9rem;
+  
+      transition: 
+        width 0.2s,
+        background-color 0.2s;
+    }
+
+    .message {
+      color: var(--modern-input-error-underline-color);
+      font-size: 1rem;
+      padding: 0.3rem 0;
+      opacity: 0;
+      height: 0rem;
+
+      transition: 
+        opacity 0.2s, 
+        height 0.2s;
+    }
+
+    &[error="true"] {
+      .line {
+        width: 100%;
+        background-color: var(--modern-input-error-underline-color);
+      } 
+      .message {
+        opacity: 1;
+        height: 1rem;
+      }
+    }
+  }
+
+
+
+  &:has(.form-input:invalid) {
+    .placeholder {
+      transform: translateY(-1.5rem);
+      font-size: 0.8rem;
+    }
+  }
+
+  &:has(.input-wrapper[editable='true']) {
+    &:has(.form-input:focus) {
+      .underline .line {
+        width: 100%;
+      }
+    }
+    &:has(.form-input:focus) {
+      .placeholder {
+        transform: translateY(-1.5rem);
+        font-size: 0.8rem;
+      }
+    }
+  }
+}

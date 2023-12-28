@@ -5,7 +5,7 @@ import { ReactComponent as PaymentIcon } from '../../../../../assets/icons/money
 import { ReactComponent as CreditIcon } from '../../../../../assets/icons/piggy-bank.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import navbarElements from './../../../enums/navbarElements'
-import { change } from '../../../../../services/state/display/homeTabSlice'
+import { changeHomeTab } from '../../../../../services/state/display/homeTabSlice'
 import { invertNavbarVisibility } from '../../../../../services/state/display/navbarVisibilitySlice'
 import { setTheme } from '../../../../../services/state/display/themeSlice'
 import { themes } from '../../../../../enums/theme'
@@ -16,7 +16,7 @@ export default function Navbar() {
   const theme = useSelector(store => store.theme.value)
 
   function updatePage(pageIndex) {
-    dispatch(change(pageIndex))
+    dispatch(changeHomeTab(pageIndex))
   }
 
   function updateTheme() {

@@ -62,7 +62,7 @@ export default function RecipientInput({updateCard, updatePhone}) {
 
   return (
     <div className='recipient-input-wrapper'>
-      <h2 className='header'>Прізвище Ім'я</h2>
+      <h2 className='recipient-header'>Прізвище Ім'я</h2>
       <div className='input-field' selectMode={selectedInput}>
         <div className='input-option card' 
         onClick={() => setSelectedInput(inputTypes.byCard)}>

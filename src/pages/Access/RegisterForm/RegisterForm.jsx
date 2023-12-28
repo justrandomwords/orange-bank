@@ -4,7 +4,11 @@ import { updatePage } from '../../../services/state/display/pageSlice'
 import { pages } from '../../../enums/pages'
 import { useDispatch } from 'react-redux'
 import { login, register } from '../../../services/api/authorization'
-import ModernInput from '../components/ui/ModernInput/ModernInput'
+import ModernInput from '../../../components/ui/ModernInput/ModernInput'
+import { setFullName } from '../../../services/state/user/mainInfo'
+
+
+
 
 export default function RegisterForm() {
   const dispatch = useDispatch();
@@ -12,6 +16,8 @@ export default function RegisterForm() {
     name: '',
     surname: '',
     login: '',
+    phoneNumber: '',
+    email: '',
     password: '',
     confirmPassword: '',
   })
@@ -19,6 +25,8 @@ export default function RegisterForm() {
     name: '',
     surname: '',
     login: '',
+    phoneNumber: '',
+    email: '',
     password: '',
     confirmPassword: '',
   })
@@ -70,6 +78,7 @@ export default function RegisterForm() {
 
     if (registerResult.success) {
       dispatch(updatePage(pages.PersonalAccount.id));
+      dispatch(setFullName([registerResult.name, registerResult.surname]));
     }
     else {
       console.log(registerResult.message);
@@ -80,47 +89,67 @@ export default function RegisterForm() {
     <div className='access-container'>
       <div className='access-form'>
         <h1 className='header'>Реєстрація</h1>
-        <div className='input-container'>
-          <ModernInput
-            name='name'
-            placeholder="Ім'я"
-            type='name'
-            value={registrationFrom.name}
-            handleChange={updateRegistrationFrom}
-            message={messageFrom.name}
-          />
-          <ModernInput
-            name='surname'
-            placeholder='Прізвище'
-            type='name'
-            value={registrationFrom.surname}
-            handleChange={updateRegistrationFrom}
-            message={messageFrom.surname}
-          />
-          <ModernInput
-            name='login'
-            placeholder='Логін'
-            type='login'
-            value={registrationFrom.login}
-            handleChange={updateRegistrationFrom}
-            message={messageFrom.login}
-          />
-          <ModernInput
-            name='password'
-            placeholder='Пароль'
-            type='password'
-            value={registrationFrom.password}
-            handleChange={updateRegistrationFrom}
-            message={messageFrom.password}
-          />
-          <ModernInput
-            name='confirmPassword'
-            placeholder='Підтвердити пароль'
-            type='password'
-            value={registrationFrom.confirmPassword}
-            handleChange={updateRegistrationFrom}
-            message={messageFrom.confirmPassword}
-          />
+        <div className='inputs-wrapper'>
+          <div className='input-wrapper'>
+            <ModernInput
+              name='name'
+              placeholder="Ім'я"
+              type='name'
+              value={registrationFrom.name}
+              handleChange={updateRegistrationFrom}
+              message={messageFrom.name}
+            />
+            <ModernInput
+              name='surname'
+              placeholder='Прізвище'
+              type='name'
+              value={registrationFrom.surname}
+              handleChange={updateRegistrationFrom}
+              message={messageFrom.surname}
+            />
+            <ModernInput
+              name='phoneNumber'
+              placeholder='Телефон'
+              type='phoneNumber'
+              value={registrationFrom.phoneNumber}
+              handleChange={updateRegistrationFrom}
+              message={messageFrom.phoneNumber}
+            />
+            <ModernInput
+              name='email'
+              placeholder='Пошта'
+              type='email'
+              value={registrationFrom.email}
+              handleChange={updateRegistrationFrom}
+              message={messageFrom.email}
+            />
+          </div>
+          <div className='input-wrapper'>
+            <ModernInput
+              name='login'
+              placeholder='Логін'
+              type='login'
+              value={registrationFrom.login}
+              handleChange={updateRegistrationFrom}
+              message={messageFrom.login}
+            />
+            <ModernInput
+              name='password'
+              placeholder='Пароль'
+              type='password'
+              value={registrationFrom.password}
+              handleChange={updateRegistrationFrom}
+              message={messageFrom.password}
+            />
+            <ModernInput
+              name='confirmPassword'
+              placeholder='Підтвердити пароль'
+              type='password'
+              value={registrationFrom.confirmPassword}
+              handleChange={updateRegistrationFrom}
+              message={messageFrom.confirmPassword}
+            />
+          </div>
         </div>
         <div className='from-bottom'>
           <button 

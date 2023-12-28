@@ -12,6 +12,10 @@
     justify-items: center;
     transition: margin-top var(--animation-speed);
 
+    .header {
+      color: var(--payment-font-color);
+    }
+
     .payment-card {
     }
   }

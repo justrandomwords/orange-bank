@@ -10,7 +10,8 @@
   padding: 0.5rem 1.9rem;
   box-sizing: border-box;
 
-  .header {
+  .recipient-header {
+    color: var(--recipient-header-color-color);
     margin: 0;
     margin-top: 1rem;
   }

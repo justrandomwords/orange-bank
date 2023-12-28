@@ -1,0 +1,106 @@
+.settings-container {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+
+  .settings-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 45rem;
+    height: 100%;
+    background-color: var(--settings-background-color);
+    padding: 2rem;
+    gap: 2rem;
+    box-sizing: border-box;
+    box-shadow: var(--dark-shadow), var(--light-shadow);
+    overflow-y: auto;
+
+    & {
+      scrollbar-width: 0.5rem;
+      scrollbar-color: var(--scrollbar-color) transparent;
+    }
+    &::-webkit-scrollbar {
+      width: 0.5rem;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: var(--scrollbar-color);
+      border-radius: 10rem;
+
+      transition: background var(--animation-speed);
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background: var(--scrollbar-highlight-color);
+    }
+    
+
+    .profile-icon-wrapper {
+      display: grid;
+      justify-items: center;
+      min-height: 9em;
+      width: 100%;
+      padding:  1rem;
+      box-sizing: border-box;
+    }
+
+    .input-field {
+      display: grid;
+      width: 100%;
+      gap: 2rem;
+
+      .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+
+        .theme-color {
+          --updated-modern-input-color: var(--editable-modern-input-color);
+        }
+
+        .icon-wrapper {
+          display: grid;
+          align-items: center;
+          cursor: pointer;
+          height: 2rem;
+          width: 2rem;
+          
+          & > * {
+            fill: var(--editable-modern-input-color);
+          }
+        }
+      }
+    }
+
+    .submit-button {
+      background-color: var(--settings-submit-background-color);
+      color: var(--settings-submit-font-color);
+      outline: none;
+      border: transparent;
+      border-radius: var(--border-radius);
+      padding: 0.7rem 1.5rem;
+      font-size: 1.05rem;
+      font-weight: 500;
+      cursor: pointer;
+
+      transition: background-color calc(var(--animation-speed)/2);
+
+      &[state='true'] {
+        background-color: var(--settings-positive-submit-background-color);
+      }
+      &[state='false'] {
+        background-color: var(--settings-negative-submit-background-color);
+      }
+
+      &:hover {
+        background-color: var(--settings-highlight-submit-background-color);
+      }
+
+      &:active {
+        background-color: var(--settings-active-submit-background-color);
+      }
+    }
+  }
+}

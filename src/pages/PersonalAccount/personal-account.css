@@ -1,6 +1,7 @@
 .personal-account-container {
   display: grid;
   grid-template-columns: 1fr 100fr;
+  grid-template-rows: 100%;
   padding-top: 3rem;
   height: 100vh;
   box-sizing: border-box;

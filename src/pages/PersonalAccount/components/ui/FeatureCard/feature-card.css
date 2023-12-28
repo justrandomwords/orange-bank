@@ -4,10 +4,8 @@
   gap: 0.8rem;
   color: var(--feature-card-font-color);
   border-radius: var(--border-radius);
-  box-shadow: 
-    0.3rem 0.3rem 0.5rem 0.005rem hsla(29, 43%, 75%, 0.8), 
-    -0.3rem -0.3rem 0.5rem hsl(30, 100%, 98%);
-  background-color: hsl(30, 43%, 95%);
+  box-shadow: var(--dark-shadow), var(--light-shadow);
+  background-color: var(--feature-card-background-color);
   position: relative;
   overflow: hidden;
   height: 100%;

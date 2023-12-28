@@ -1,6 +1,6 @@
 html[theme='dark'] {
   --main-color: hsl(50, 10%, 10%);
-  --secondary-color: rgba(24, 24, 24, 1);
+  --secondary-color: #111111; /*rgba(24, 24, 24, 1)*/
   --additional-color: rgb(40, 40, 40);
   --accent-color: hwb(33 40% 0%);
   --font-color: rgb(255, 255, 255);
@@ -8,6 +8,7 @@ html[theme='dark'] {
   --background-color: hsl(0, 3%, 6%);
   --background-image: url('../../../assets/images/background-dark.png');
 
+  --mainpage-background: var(--secondary-color);
 
   --header-color: var(--secondary-color);
   --header-font-color: var(--font-color);
@@ -18,12 +19,12 @@ html[theme='dark'] {
   --navbar-element-font-color: var(--font-color);
   --navbar-element-icon-color: var(--font-color);
 
-  --card-color: hsl(0, 0%, 12%);
+  --card-color: hsl(0, 0%, 8%);
   --card-icon-color: var(--font-color);
   --card-font-color: var(--font-color);
   --card-additional-font-color: var(--font-color);
 
-  --feature-card-color: var(--secondary-color);
+  --feature-card-background-color: var(--secondary-color);
   --feature-card-font-color: var(--font-color);
   
   --operation-highlight-color: var(--accent-color);
@@ -35,10 +36,43 @@ html[theme='dark'] {
   --transactions-day-color: rgba(155, 155, 155, 1);
   --positive-payment-color: rgba(87, 198, 69, 1);
 
-  --login-backgroung-color: var(--background-color);
-  --login-backdrop-image: url('../../../assets/images/background-dark.png');
   --login-font-color: var(--font-color);
-  --login-input-backgroung-color: transparent;
-  --login-input-font-color: var(--login-font-color);
-  --login-input-border-color: rgb(115, 115, 115);
+  --login-button-main-color: rgba(255, 255, 255);
+  --login-button-font-color: var(--login-font-color);
+  --login-button-hover-font-color: rgb(0, 0, 0);
+
+  --modern-input-color: white;
+  --modern-input-background-color: transparent;
+  --modern-input-error-underline-color: rgb(255, 0, 0);
+  --editable-modern-input-color: rgb(255, 255, 255);
+
+  --settings-background-color: var(--secondary-color);
+  --settings-submit-background-color: hwb(27 15% 0%);
+  --settings-highlight-submit-background-color: hwb(27 37% 0%);
+  --settings-active-submit-background-color: hwb(27 55% 0%);
+  --settings-positive-submit-background-color: rgb(62, 206, 52);
+  --settings-negative-submit-background-color: rgb(255, 35, 35);
+  --settings-submit-font-color: rgb(0, 0, 0);
+
+  --payment-font-color: rgb(232, 232, 232);
+  --payment-center-background-color: var(--secondary-color);
+  --payment-placeholder-color: hsl(0, 0%, 15%);
+  --payment-description-placeholder-color: hsl(0, 0%, 25%);
+  --payment-transaction-background-color: hsl(91, 43%,50%);
+  --payment-transaction-shadow-color: 
+    0.1rem 0.1rem 0.5rem 0.005rem hsl(91, 44%, 35%),
+    -0.1rem -0.1rem 0.5rem hsl(91, 100%, 31%);
+
+  --card-switch-backgound-color: transparent;
+  --card-switch-shadow-color: rgba(0, 0, 0, 0.5);
+
+  --recipient-background-color: var(--card-color);
+  --recipient-header-color-color: white;
+  --recipient-category-name-font-color: rgb(154, 154, 154);
+  --recipient-input-placeholder-font-color: rgb(167, 167, 167);
+
+  --mainpage-font-color: white;
+
+  --light-shadow: -0.3rem -0.3rem 0.5rem hsla(0, 0%, 20%, 0.2);
+  --dark-shadow: 0.3rem 0.3rem 0.5rem 0.005rem hsla(0, 0%, 4%, 0.9);
 }

@@ -11,7 +11,7 @@ export default function Home() {
   
   const transactionHistoryElement = transactionHistory.map(transactionsDay => 
     <TransactionCard 
-      name={transactionsDay.date} 
+      date={transactionsDay.date} 
       transactionsDay={transactionsDay.transactions}
     />
   )
@@ -21,19 +21,12 @@ export default function Home() {
       <BankcardContainer/>
 
       <div className='function-container'>
-        <FeatureCard childrenClass='operations' header='Швидкі дії'>
-          <QuickOperation name='Платежі'/>
-          <QuickOperation name='Платежі'/>
-          <QuickOperation name='Платежі'/>
-          <QuickOperation name='Переказ на карту / за номером телефону'/>
-        </FeatureCard>
+        <FeatureCard header='Статистика'>
+        </FeatureCard> 
 
         <FeatureCard class='bottomless' childrenClass='transactions-cards-container' header='Історія транзакції'>
           {transactionHistoryElement}
         </FeatureCard>
-
-        <FeatureCard header='Статистика'>
-        </FeatureCard>       
       </div>
     </div>
   )

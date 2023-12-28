@@ -5,12 +5,11 @@ import { themes } from "../../../enums/theme";
 const themeSlice = createSlice({
   name: 'theme',
   initialState: {
-    value: localStorage.getItem('theme') || getPreferredTheme()
+    value: getPreferredTheme()
   },
   reducers: {
     setTheme: (state, action) => {
       state.value = action.payload;
-      localStorage.setItem('theme', state.value)
     }
   }
 })

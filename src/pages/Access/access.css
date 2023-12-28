@@ -16,8 +16,8 @@
     max-width: 25rem;
     border-radius: 1rem;
     padding: 2rem 2rem 4rem 2rem;
-    backdrop-filter: blur(1rem) brightness(70%);
-    box-shadow: 0 0 5rem var(--login-border-color);
+    backdrop-filter: blur(1rem) brightness(70%) ;
+    box-shadow: 0.3rem 0.3rem 2rem 0.001rem rgba(0, 0, 0, 0.4);
   
     & * {
       font-size: 1.1rem;
@@ -27,12 +27,19 @@
       margin: 0.5rem 0 2rem 0;
       font-size: 2rem;
     }
-  
-    .input-container {
-      display: grid;
+
+    .inputs-wrapper {
+      position: relative;
       width: 100%;
-      gap: 0.5rem;
+
+      .input-wrapper {
+        display: grid;
+        width: 100%;
+        gap: 0.5rem;
+      }
     }
+  
+   
   
     .from-bottom {
       display: grid;

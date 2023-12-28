@@ -10,11 +10,10 @@ import { setCards } from '../../services/state/user/cards';
 import { getCards, getTransactionHistory, getUserData } from '../../services/api/userData';
 import { setTransactionHistory } from '../../services/state/user/transactionHistory';
 import { useEffect } from 'react';
+import Settings from './tabs/Settings/Settings';
 
 export default function PersonalAccount() {
   const dispatch = useDispatch();
-  dispatch(setTransactionHistory(getTransactionHistory()))
-
   const homeTabIndex = useSelector(store => store.homeTab.index);
 
   function Tab() {
@@ -25,17 +24,18 @@ export default function PersonalAccount() {
         return <Payment/>
       case navbarElements.Credit:
         return <Creadit/>
-      case navbarElements.Setting:
-        return <Home/>
+      case navbarElements.Settings:
+        return <Settings/>
     }
   }
 
   async function updateUserData() {
     const userData = await getUserData()
+    console.log(userData.history);
 
-    
     if (userData.success) {
       dispatch(setCards(userData.cardsData));
+      dispatch(setTransactionHistory(userData.history));
     } 
   }
 

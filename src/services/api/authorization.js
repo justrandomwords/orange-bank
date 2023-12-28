@@ -10,6 +10,9 @@ export function register(formData) {
       action: 1,
       name: formData.name,
       surname: formData.surname,
+      codeCountry: formData.phoneNumber.slice(0,3),
+      phoneNumber: formData.phoneNumber.slice(3, formData.phoneNumber.length),
+      mobilephone: formData.email,
       login: formData.login,
       password: formData.password,
     }),
@@ -18,8 +21,6 @@ export function register(formData) {
   .then(data =>{
     if(data.success) {
       document.cookie = `token=${data.token}; expires=${new Date(Date.now() + 60*60*1000).toUTCString()}; path=/`;
-      localStorage.setItem('name', data.name);
-      localStorage.setItem('surname', data.surname);
     }
 
     return data;
@@ -43,8 +44,6 @@ export function login(formData) {
   .then(data =>{
     if(data.success) {
       document.cookie = `token=${data.token}; expires=${new Date(Date.now() + 60*60*1000).toUTCString()}; path=/`;
-      localStorage.setItem('name', data.name);
-      localStorage.setItem('surname', data.surname);
     }
 
     return data;

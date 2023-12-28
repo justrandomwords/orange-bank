@@ -4,7 +4,8 @@ import { updatePage } from '../../../services/state/display/pageSlice'
 import { pages } from '../../../enums/pages'
 import { useDispatch } from 'react-redux'
 import { login, register } from '../../../services/api/authorization'
-import ModernInput from '../components/ui/ModernInput/ModernInput'
+import ModernInput from '../../../components/ui/ModernInput/ModernInput'
+import { setFullName } from '../../../services/state/user/mainInfo'
 
 export default function LoginForm() {
   const dispatch = useDispatch();
@@ -68,17 +69,21 @@ export default function LoginForm() {
   async function authorization() {
     const loginResult = await login(loginFrom);
 
-    if (loginResult.success) 
+    if (loginResult.success) {
       dispatch(updatePage(pages.PersonalAccount.id));
-    else 
+      dispatch(setFullName([loginResult.name, loginResult.surname]));
+    }
+    else {
       console.log(loginResult.message);
+    }
   }
 
   return (
     <div className='access-container'>
       <div className='access-form'>
         <h1 className='header'>Вхід</h1>
-        <div className='input-container'>
+        <div className='inputs-wrapper'>
+          <div className='input-container'>
           <ModernInput
             name='login'
             placeholder='Логін'
@@ -95,7 +100,9 @@ export default function LoginForm() {
             handleChange={updatePassword}
             message={messageFrom.password}
           />
+          </div>
         </div>
+
         <div className='from-bottom'>
           <button 
             className='confirm-button' type="button"

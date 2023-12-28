@@ -23,7 +23,8 @@
     padding: 2rem 0;
     width: 100%;
     box-sizing: border-box;
-    box-shadow: var(--bottom-shadow) inset, var(--top-shadow) inset;
+    box-shadow: var(--dark-shadow) inset, var(--light-shadow) inset;
+
     background-color: var(--payment-center-background-color); 
     border-radius: 2rem;
 
@@ -33,6 +34,7 @@
       justify-content: center;
       align-items: first baseline;
       overflow: hidden;
+      color: var(--payment-font-color);
 
       .balance {
         height: 6rem;
@@ -42,9 +44,10 @@
         border: transparent;
         outline: none;
         resize:none;
+        color: var(--payment-font-color);
 
         &::placeholder {
-          color: var(--payment-center-placeholder-color);
+          color: var(--payment-placeholder-color);
         }
         &::-webkit-scrollbar {
           display: none
@@ -69,25 +72,24 @@
       justify-items: center;
 
       .transfer-button {
-        background-color: hsl(91, 43%,50%);
+        background-color: var(--payment-transaction-background-color);
         color: hsl(0, 0%, 100%);
         border: transparent;
         padding: 0.8rem 1.5rem;
         border-radius: 0.5rem;
         cursor: pointer;
-        box-shadow: 
-          0.2rem 0.2rem 0.5rem 0.005rem hsl(91, 43%, 60%),
-          -0.2rem -0.2rem 0.5rem hsl(91, 100%, 95%);  
+        box-shadow: var(--payment-transaction-shadow-color);  
       }
     }
 
     .description-wrapper {
       display: grid;
       padding: 1rem 2rem;
-
+      
       .description-textarea {
-        background-color: var(--payment-description-background-color);
-        border: var(--payment-description-border-color);
+        background-color: transparent;
+        color: var(--payment-font-color);
+        border: transparent;
         outline: none;
         border-radius: 1rem;
         font-size: 1.2rem;
@@ -103,12 +105,16 @@
           display: none;
         }
 
+        &::placeholder {
+          color: var(--payment-description-placeholder-color);
+        }
+
         transition: 
           box-shadow calc(var(--animation-speed) / 2),
           scale calc(var(--animation-speed) / 2);
 
         &:focus {
-          box-shadow: var(--top-shadow), var(--bottom-shadow);
+          box-shadow: var(--dark-shadow), var(--light-shadow);
           scale: 1;    
         }
       }
